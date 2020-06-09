@@ -4,10 +4,128 @@
 
 {% block content %}
 
-  <h1>Make buggy</h1>
+  <h1>
+    {% if buggy %}
+      Edit buggy #{{ buggy['id'] }}
+    {% else %}
+      Create buggy 
+    {% endif %}
+  </h1>
+  <p>
+    {{ msg }}
+  </p>
   <form action="/new" method="post">
+    <label for="qty_wheels">Id:</label>
+    <input type="hidden" name="id" value="{{ buggy['id'] }}"  />
+    <br>
+
     <label for="qty_wheels">Number of wheels:</label>
-    <input type="text" name="qty_wheels" />
+    <input type="text" name="qty_wheels" value="{{ buggy['qty_wheels'] }}"  />
+    <br>
+
+    <label for="flag_color">Colour of flag:</label>
+    <select name="flag_color" value ="{{ buggy['flag_color'] }}">
+      <option>plain</option>
+      <option>Black</option>
+      <option>Blue</option>
+      <option>Red</option>
+      <option>Yellow</option>
+      <option>Green</option>
+    </select>
+    <br>
+
+    <label for "flag_color_secondary">other flag colour:</label>
+    <select name="flag_color_secondary" value = "{{ buggy['flag_color_secondary'] }}" > 
+      <option>plain1</option>
+      <option>Black</option>
+      <option>Blue</option>
+      <option>Red</option>
+      <option>Yellow</option>
+      <option>Green</option>
+    </select>
+    <br>
+
+    <label for "flag_pattern">flag's pattern: </label>
+    <select name="flag_pattern" value = "{{ buggy['flag_pattern'] }}" >
+      <option>plain2</option>
+      <option>Vstripe</option>
+      <option>hstripe</option> 
+      <option>dstripe</option> 
+      <option>checker</option> 
+      <option>spot</option>
+    </select> 
+    <br>
+
+
+
+    <label for="qty_tyres">number of tyres:</label>
+    <input type="text" name="qty_tyres" value="{{ buggy['qty_tyres'] }}"  
+    />
+    <label>  Armour:</label>
+    <select name="armour" value = "{{ buggy['armour'] }}" >
+      <option>none</option>
+      <option>wood</option>
+      <option>aluminium</option>
+      <option>thinsteel</option>
+      <option>thicksteel</option>
+      <option>titanium</option>
+    </select>
+    <br>
+
+    <label> Offensive capability:</label>
+    <select name = "attack" value = "{{ buggy['attack'] }}" >
+      <option>none</option>
+      <option>spike</option>
+      <option>flame</option>
+      <option>charge</option>
+      <option>biohazard</option>
+    </select>
+    <br>
+
+    <label for "power_type">Primary motive power: </label>
+    <select name="power_type" value = "{{ buggy['power_type'] }}" >
+      <option>petrol</option>
+      <option>fusion</option>
+      <option>steam</option>
+      <option>bio</option>
+      <option>electric</option>
+      <option>rocket</option>
+      <option>hamster</option>
+      <option>thermo</option>
+      <option>solar</option>
+      <option>wind</option>
+    </select>
+    <br>
+
+    <label for="power_units">primary motive power units:</label>
+    <input type="text" name="power_units" value="{{ buggy['power_units'] }}"  
+    />
+    <br>
+
+
+    <label>Auxiliary motive power</label>
+    <select name = "aux_power_type" value = "{{ buggy['aux_power_type ']}}" >
+      <option>petrol</option>
+      <option>fusion</option>
+      <option>steam</option>
+      <option>bio</option>
+      <option>electric</option>
+      <option>rocket</option>
+      <option>hamster</option>
+      <option>thermo</option>
+      <option>solar</option>
+      <option>wind</option>
+    </select>
+    <br>
+
+    <label for="aux_power_units">auxiliary motive power units:</label>
+    <input type="text" name="aux_power_units" value="{{ buggy['aux_power_units'] }}"  
+    />
+    <br>
+
+
+
+
     <input type="submit" class="button">
   </form>
   <p>
